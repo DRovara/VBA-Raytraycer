@@ -1,5 +1,3 @@
-'----WorldSpaceBox class
-
 Implements WorldSpaceShape
 
 Private position_ As New Vector3
@@ -12,7 +10,7 @@ End Function
 
 Private Sub Class_Initialize()
     Set position_ = New Vector3
-    Call position_.Init(0, 0, -5)
+    Call position_.Init(0, 0, 0)
     Set size_ = New Vector3
     Call size_.Init(10, 10, 10)
 End Sub

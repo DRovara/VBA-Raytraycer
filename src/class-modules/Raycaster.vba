@@ -1,5 +1,4 @@
 '----Raycaster class
-
 'members
 Private cam_ As ViewerCamera
 Private planeDistance_ As Double
@@ -128,27 +127,21 @@ Public Function run() As Boolean()
     Dim result() As Boolean
     ReDim result(pixelHeight, pixelWidth)
     
+    
     Dim y As Integer
     Dim x As Integer
     For y = 0 To pixelHeight - 1
         Dim dy As Double
         dy = -planeHeight / 2 + y * pH
         For x = 0 To pixelWidth - 1
-            If x Mod 50 = 0 Then
-                Dim msg As String
-                msg = "Pixel " & (x) & ", " & (y)
-                Sheet1.Cells(1, 1).value = msg
-            End If
+            
             Dim dx As Double
             dx = -planeWidth / 2 + x * pW
             Dim planePoint As Vector3
             Set planePoint = planeCenter.Add(stepY.Multiply(dy)).Add(stepX.Multiply(dx))
+            
             result(y, x) = Cast(cam.position, planePoint)
-            If result(y, x) Then
-                Sheet1.Cells(2, 1).value = "New: " & (y) & " " & (x)
-            Else
-                Sheet1.Cells(2, 1).value = "No:  " & (y) & " " & (x)
-            End If
+            
         Next x
     Next y
     
@@ -171,9 +164,8 @@ Public Function Cast(startPosition As Vector3, toPosition As Vector3) As Boolean
     Dim dist As Double
     
     While totalDistance < far
-        DoEvents
-        
         dist = world.Distance(current)
+        
         If dist < epsilon Then
             Cast = True
             Exit Function
@@ -184,7 +176,9 @@ Public Function Cast(startPosition As Vector3, toPosition As Vector3) As Boolean
         End If
         
         current.Translate direction.Multiply(dist)
+        
         totalDistance = totalDistance + dist
     Wend
+    
     Cast = world.Distance(current) < epsilon
 End Function
