@@ -12,7 +12,7 @@ End Function
 
 Private Sub Class_Initialize()
     Set position_ = New Vector3
-    Call position_.Init(-5, -5, -10)
+    Call position_.Init(0, 0, -5)
     Set size_ = New Vector3
     Call size_.Init(10, 10, 10)
 End Sub
@@ -31,9 +31,9 @@ Public Function WorldSpaceShape_Distance(p As Vector3) As Double
     Dim dx As Double
     Dim dy As Double
     Dim dz As Double
-    dx = Abs(difference.x) - size.x
-    dy = Abs(difference.y) - size.y
-    dz = Abs(difference.z) - size.z
+    dx = Abs(difference.x) - size.x / 2
+    dy = Abs(difference.y) - size.y / 2
+    dz = Abs(difference.z) - size.z / 2
     
     WorldSpaceShape_Distance = IIf(dx > dy, IIf(dx > dz, dx, dz), IIf(dy > dz, dy, dz))
 End Function

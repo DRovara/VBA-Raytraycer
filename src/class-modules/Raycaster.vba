@@ -21,7 +21,7 @@ Private Sub Class_Initialize()
     planeDistance_ = 10
     far_ = 50
     Set world_ = New WorldSpace
-    stepSize_ = 1
+    stepSize_ = 0.1
     
     pixelWidth_ = 200
     pixelHeight_ = 150
