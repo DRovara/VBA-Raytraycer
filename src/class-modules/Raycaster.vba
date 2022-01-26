@@ -1,4 +1,4 @@
-'----Raymarcher class
+'----Raycaster class
 
 'members
 Private cam_ As ViewerCamera
