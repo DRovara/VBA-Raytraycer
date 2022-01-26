@@ -27,7 +27,7 @@ End Property
 
 Public Function WorldSpaceShape_Distance(p As Vector3) As Double
     Dim difference As Vector3
-    difference = DistanceVector(p, position)
+    Set difference = DistanceVector(p, position)
     Dim dx As Double
     Dim dy As Double
     Dim dz As Double
@@ -35,5 +35,5 @@ Public Function WorldSpaceShape_Distance(p As Vector3) As Double
     dy = Abs(difference.y) - size.y
     dz = Abs(difference.z) - size.z
     
-    WorldSpaceShape_Distance = Iff(dx < dy, Iff(dx < dz, dx, dz), Iff(dy < dz, dy, dz))
+    WorldSpaceShape_Distance = IIf(dx > dy, IIf(dx > dz, dx, dz), IIf(dy > dz, dy, dz))
 End Function

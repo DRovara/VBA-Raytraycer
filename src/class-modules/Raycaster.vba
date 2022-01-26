@@ -157,21 +157,34 @@ End Function
 
 Public Function Cast(startPosition As Vector3, toPosition As Vector3) As Boolean
     Dim direction As Vector3
-    Set direction = DistanceVector(startPosition, toPosition).Normalize.Multiply(stepSize)
+    Set direction = DistanceVector(startPosition, toPosition).Normalize
+    
     Dim current As New Vector3
     Call current.Init(startPosition.x, startPosition.y, startPosition.z)
+    
+    Dim epsilon As Double
+    epsilon = 0.001
     
     Dim totalDistance As Double
     totalDistance = 0
     
+    Dim dist As Double
+    
     While totalDistance < far
         DoEvents
-        If world.Intersects(current) Then
+        
+        dist = world.Distance(current)
+        If dist < epsilon Then
             Cast = True
             Exit Function
         End If
-        current.Translate direction
-        totalDistance = totalDistance + stepSize
+        
+        If dist < stepSize Then
+            dist = stepSize
+        End If
+        
+        current.Translate direction.Multiply(dist)
+        totalDistance = totalDistance + dist
     Wend
-    Cast = world.Intersects(current)
+    Cast = world.Distance(current) < epsilon
 End Function
