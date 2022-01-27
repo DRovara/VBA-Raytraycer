@@ -26,3 +26,7 @@ Public Function CreateRaycaster(cam As ViewerCamera, world As WorldSpace, planeD
     r.pixelHeight = pixelHeight
     CreateRaycaster = r
 End Function
+
+Public Function DotProduct(u As Vector3, v As Vector3) As Double
+    DotProduct = u.x * v.x + u.y * v.y + u.z * v.z
+End Function

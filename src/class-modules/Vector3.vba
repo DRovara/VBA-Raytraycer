@@ -1,5 +1,3 @@
-'----Vector3 class
-
 'members
 Private x_ As Double
 Private y_ As Double

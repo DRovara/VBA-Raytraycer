@@ -1,4 +1,3 @@
-'----Raycaster class
 'members
 Private cam_ As ViewerCamera
 Private planeDistance_ As Double
@@ -11,6 +10,8 @@ Private pixelHeight_ As Integer
 
 Private planeWidth_ As Double
 Private planeHeight_ As Double
+
+Private backgroundColour_ As Long
 
 
 
@@ -27,6 +28,7 @@ Private Sub Class_Initialize()
     
     planeWidth_ = 20
     planeHeight = 15
+    backgroundColour = RGB(255, 255, 255)
 End Sub
 
 
@@ -68,6 +70,9 @@ Property Get planeHeight() As Double
     planeHeight = planeHeight_
 End Property
 
+Property Get backgroundColour() As Long
+    backgroundColour = backgroundColour_
+End Property
 
 
 Property Set cam(value As ViewerCamera)
@@ -106,10 +111,13 @@ Property Let planeHeight(value As Double)
     planeHeight_ = value
 End Property
 
+Property Let backgroundColour(value As Long)
+    backgroundColour_ = value
+End Property
 
 
 'methods
-Public Function run() As Boolean()
+Public Function run() As Long()
     Application.DisplayStatusBar = True
     Dim planeCenter As Vector3
     Set planeCenter = cam.position.Add(cam.direction.Multiply(planeDistance))
@@ -124,7 +132,7 @@ Public Function run() As Boolean()
     Call stepY.Init(cam.up.x, cam.up.y, cam.up.z)
     Set stepX = CrossProduct(cam.direction, cam.up).Normalize
     
-    Dim result() As Boolean
+    Dim result() As Long
     ReDim result(pixelHeight, pixelWidth)
     
     
@@ -148,7 +156,7 @@ Public Function run() As Boolean()
     run = result
 End Function
 
-Public Function Cast(startPosition As Vector3, toPosition As Vector3) As Boolean
+Public Function Cast(startPosition As Vector3, toPosition As Vector3) As Long
     Dim direction As Vector3
     Set direction = DistanceVector(startPosition, toPosition).Normalize
     
@@ -167,7 +175,7 @@ Public Function Cast(startPosition As Vector3, toPosition As Vector3) As Boolean
         dist = world.Distance(current)
         
         If dist < epsilon Then
-            Cast = True
+            Cast = world.ColourAt(current)
             Exit Function
         End If
         
@@ -180,5 +188,9 @@ Public Function Cast(startPosition As Vector3, toPosition As Vector3) As Boolean
         totalDistance = totalDistance + dist
     Wend
     
-    Cast = world.Distance(current) < epsilon
+    If world.Distance(current) < epsilon Then
+        Cast = world.ColourAt(current)
+    Else
+        Cast = backgroundColour
+    End If
 End Function

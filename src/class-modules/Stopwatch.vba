@@ -1,5 +1,3 @@
-'----Stopwatch class
-
 Private lastTime As Double
 Private measurements As New Collection
 Private measurementIndex As Integer
@@ -8,7 +6,7 @@ Public Property Get size() As Integer
     size = measurements.Count
 End Property
 
-Public Sub Start()
+Public Sub start()
     lastTime = Timer
     measurementIndex = 1
 End Sub
