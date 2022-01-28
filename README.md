@@ -49,7 +49,7 @@ Should you instead want to run the raytracer in your own Excel documents, first 
 ## Usage
 
 The `Raytracer` class represents the main actor responsible for the process. Upon creating a new instance of the class, the new object will be populated with default values as defined in [src/class-modules/Raytracer.cls](src/class-modules/Raytracer.cls). At runtime, these default values can be changed to modify the behaviour of the raytracer.
-A new raytracer can also be created using the `CreateRaycaster(...)` function provided in [src/class-modules/utils.bas](src/class-modules/Utils.bas).
+A new raytracer can also be created using the `CreateRaycaster(...)` function provided in [src/modules/utils.bas](src/modules/Utils.bas).
 
 The main properties that can be modified are 
 
