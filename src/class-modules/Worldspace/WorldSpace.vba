@@ -1,5 +1,6 @@
 'members
 Private shapeList_ As New Collection
+Private lightList_ As New Collection
 
 
 
@@ -11,6 +12,11 @@ End Sub
 
 
 'methods
+Public Sub AddLight(l As Light)
+    lightList_.Add l
+End Sub
+
+
 Public Sub AddShape(shape As WorldSpaceShape)
     shapeList_.Add shape
 End Sub

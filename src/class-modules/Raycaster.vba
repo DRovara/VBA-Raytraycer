@@ -120,7 +120,7 @@ End Property
 Public Function run() As Long()
     Application.DisplayStatusBar = True
     Dim planeCenter As Vector3
-    Set planeCenter = cam.position.Add(cam.direction.Multiply(planeDistance))
+    Set planeCenter = cam.Position.Add(cam.direction.Multiply(planeDistance))
     
     Dim pW As Double
     Dim pH As Double
@@ -148,7 +148,7 @@ Public Function run() As Long()
             Dim planePoint As Vector3
             Set planePoint = planeCenter.Add(stepY.Multiply(dy)).Add(stepX.Multiply(dx))
             
-            result(y, x) = Cast(cam.position, planePoint)
+            result(y, x) = Cast(cam.Position, planePoint)
             
         Next x
     Next y

@@ -31,8 +31,8 @@ End Function
 
 
 'properties
-Property Get position() As Vector3
-    Set position = position_
+Property Get Position() As Vector3
+    Set Position = position_
 End Property
 
 Property Get direction() As Vector3
