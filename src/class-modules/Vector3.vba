@@ -39,10 +39,10 @@ End Property
 
 
 'methods
-Public Function Add(v As Vector3) As Vector3
+Public Function Add(V As Vector3) As Vector3
     Dim v2 As Vector3
     Set v2 = New Vector3
-    Set Add = v2.Init(x + v.x, y + v.y, z + v.z)
+    Set Add = v2.Init(x + V.x, y + V.y, z + V.z)
 End Function
 
 Public Function Multiply(scalar As Double) As Vector3
@@ -58,8 +58,8 @@ Public Function Normalize() As Vector3
     Set Normalize = v2.Init(x / length, y / length, z / length)
 End Function
 
-Public Sub Translate(v As Vector3)
-    x_ = x_ + v.x
-    y_ = y_ + v.y
-    z_ = z_ + v.z
+Public Sub Translate(V As Vector3)
+    x_ = x_ + V.x
+    y_ = y_ + V.y
+    z_ = z_ + V.z
 End Sub

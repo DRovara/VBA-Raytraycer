@@ -175,13 +175,13 @@ Public Function Cast(startPosition As Vector3, toPosition As Vector3) As Long
         dist = world.Distance(current)
         
         If dist < epsilon Then
-            Cast = world.ColourAt(current)
+            Cast = world.ColourAt(current, cam)
             Exit Function
         End If
         
-        If dist < stepSize Then
-            dist = stepSize
-        End If
+        'If dist < stepSize Then
+        '    dist = stepSize
+        'End If
         
         current.Translate direction.Multiply(dist)
         
@@ -189,7 +189,7 @@ Public Function Cast(startPosition As Vector3, toPosition As Vector3) As Long
     Wend
     
     If world.Distance(current) < epsilon Then
-        Cast = world.ColourAt(current)
+        Cast = world.ColourAt(current, cam)
     Else
         Cast = backgroundColour
     End If
